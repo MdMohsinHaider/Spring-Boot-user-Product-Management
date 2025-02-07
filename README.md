@@ -36,8 +36,8 @@ cd spring_boot_simple_crud_with_sql
 Modify `src/main/resources/application.properties` based on your database preference.
 #### For MySQL
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database
-spring.datasource.username=your_username
+spring.datasource.url=jdbc:mysql://localhost:3306/springboot_crud
+spring.datasource.username=root
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
@@ -61,11 +61,74 @@ mvn spring-boot:run
 ## API Endpoints
 | Method | Endpoint | Description |
 |--------|---------|-------------|
-| GET | `/api/entities` | Get all entities |
-| GET | `/api/entities/{id}` | Get entity by ID |
-| POST | `/api/entities` | Create a new entity |
-| PUT | `/api/entities/{id}` | Update an entity |
-| DELETE | `/api/entities/{id}` | Delete an entity |
+| GET | `/student/getStudent/{id}` | Get student by ID |
+| POST | `/addition/{a}/{b}` | Add two numbers |
+| POST | `/student/saveStudent` | Create a new student |
+| POST | `/student/saveMultipleStudent` | Create multiple students |
+| GET | `/student/getAllStudents` | Get all students |
+| DELETE | `/student/deleteStudent/{id}` | Delete a student |
+| PUT | `/student/updateStudent/{id}` | Update a student |
+
+## Postman API Documentation
+### GET Student by ID
+```
+GET localhost:8090/student/getStudent/1
+```
+
+### POST Addition
+```
+POST localhost:8090/addition/200/300
+```
+
+### POST Save Student
+```
+POST localhost:8090/student/saveStudent
+```
+**Body (JSON):**
+```json
+{
+    "id": "123",
+    "name": "Devil",
+    "email": "devil@mohsin.com",
+    "phone": "1234567890"
+}
+```
+
+### POST Save Multiple Students
+```
+POST localhost:8090/student/saveMultipleStudent
+```
+**Body (JSON):**
+```json
+[
+    { "name": "Devil", "email": "devil@mohsin.com", "phone": "1234567890" },
+    { "name": "Evil", "email": "evil@mohsin.com", "phone": "0987654321" },
+    { "name": "Lucifer", "email": "lucifer@mohsin.com", "phone": "1122334455" }
+]
+```
+
+### DELETE Student
+```
+GET localhost:8090/student/deleteStudent/124
+```
+
+### GET All Students
+```
+GET localhost:8090/student/getAllStudents
+```
+
+### PUT Update Student
+```
+PUT localhost:8090/student/updateStudent/1
+```
+**Body (JSON):**
+```json
+{
+    "name": "Md Mohsin Haider",
+    "email": "mohsinhaider@mohsin.com",
+    "phone": 1256527688
+}
+```
 
 ## Dependencies
 This project uses the following dependencies:
@@ -104,6 +167,6 @@ Feel free to fork this repository and submit pull requests for improvements.
 This project is licensed under the MIT License.
 
 ## Contact
-For any queries, contact Md Mohsin haider at mdmohsinhaider6@gmail.com
-On Linkedin, contact Md-Mohsin-haider at https://www.linkedin.com/in/md-mohsin-haider
+For any queries, contact **Md Mohsin Haider** at [mdmohsinhaider6@gmail.com](mailto:mdmohsinhaider6@gmail.com)
 
+Connect on **LinkedIn**: [Md Mohsin Haider](https://www.linkedin.com/in/md-mohsin-haider/)
