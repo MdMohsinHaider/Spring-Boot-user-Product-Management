@@ -1,6 +1,6 @@
-package com.mohsin.spring_boot_simple_crud_with_sql.repository;
+package com.mohsin.user_product.repository;
 
-import com.mohsin.spring_boot_simple_crud_with_sql.entities.User;
+import com.mohsin.user_product.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
