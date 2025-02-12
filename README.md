@@ -1,172 +1,163 @@
-# Spring Boot Simple CRUD with SQL
+# User Product Management API
 
-## Overview
-This is a simple CRUD (Create, Read, Update, Delete) application built using Spring Boot. The project uses Spring Data JPA for database interactions and supports both MySQL and H2 databases.
+## Project Information
+This project is a simple CRUD application built using Spring Boot with SQL database integration. It provides RESTful APIs for managing user data, including creating, reading, updating, and deleting users.
 
-## Features
-- Create, Read, Update, and Delete operations for an entity.
-- Uses Spring Boot 3.4.2 with Java 17.
-- Integrated with MySQL and H2 for database operations.
-- Lombok for reducing boilerplate code.
-- REST API endpoints for performing CRUD operations.
-
-## Technologies Used
-- Java 17
+### Technologies Used
 - Spring Boot 3.4.2
 - Spring Data JPA
 - Spring Web
-- MySQL
-- H2 Database (for testing)
+- H2 Database (for development)
+- MySQL (for production)
 - Lombok
 - Maven
+- Java 17
 
-## Project Setup
-### Prerequisites
-- JDK 17 or later
-- Maven
-- MySQL (if using MySQL as the database)
+## Overview
+This API manages user-related operations such as creating, retrieving, updating, and deleting user records.
 
-### Clone the Repository
-```sh
-git clone https://github.com/your-repo/spring_boot_simple_crud_with_sql.git
-cd user_product_management
+## Base URL
+```
+http://localhost:8090/user
 ```
 
-### Configure the Database
-Modify `src/main/resources/application.properties` based on your database preference.
-#### For MySQL
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/springboot_crud
-spring.datasource.username=root
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+---
+
+## Endpoints
+
+### 1. Save a Single User
+**Method:** `POST`
+
+**Endpoint:**
 ```
-#### For H2 (In-Memory Database)
-```properties
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.h2.console.enabled=true
+/user/saveUser
 ```
 
-### Build and Run the Application
-```sh
-mvn clean install
-mvn spring-boot:run
-```
-
-## API Endpoints
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET | `/student/getStudent/{id}` | Get student by ID |
-| POST | `/addition/{a}/{b}` | Add two numbers |
-| POST | `/student/saveStudent` | Create a new student |
-| POST | `/student/saveMultipleStudent` | Create multiple students |
-| GET | `/student/getAllStudents` | Get all students |
-| DELETE | `/student/deleteStudent/{id}` | Delete a student |
-| PUT | `/student/updateStudent/{id}` | Update a student |
-
-## Postman API Documentation
-### GET Student by ID
-```
-GET localhost:8090/student/getStudent/1
-```
-
-### POST Addition
-```
-POST localhost:8090/addition/200/300
-```
-
-### POST Save Student
-```
-POST localhost:8090/student/saveStudent
-```
-**Body (JSON):**
+**Request Body (JSON):**
 ```json
 {
-    "id": "123",
-    "name": "Devil",
+    "username": "devil",
     "email": "devil@mohsin.com",
-    "phone": "1234567890"
+    "phone": "1123344",
+    "dob": "2002-10-10",
+    "password": "123"
 }
 ```
 
-### POST Save Multiple Students
+---
+
+### 2. Save Multiple Users
+**Method:** `POST`
+
+**Endpoint:**
 ```
-POST localhost:8090/student/saveMultipleStudent
+/user/saveMultipleUser
 ```
-**Body (JSON):**
+
+**Request Body (JSON):**
 ```json
 [
-    { "name": "Devil", "email": "devil@mohsin.com", "phone": "1234567890" },
-    { "name": "Evil", "email": "evil@mohsin.com", "phone": "0987654321" },
-    { "name": "Lucifer", "email": "lucifer@mohsin.com", "phone": "1122334455" }
+  {
+    "username": "jane_smith",
+    "email": "jane.smith002@example.com",
+    "phone": "9876543221",
+    "dob": "1997-03-22",
+    "password": "Jane@456"
+  },
+  {
+    "username": "alex_johnson",
+    "email": "alex.johnson003@example.com",
+    "phone": "9876543222",
+    "dob": "1992-11-05",
+    "password": "Alex@789"
+  },
+  {
+    "username": "emma_wilson",
+    "email": "emma.wilson004@example.com",
+    "phone": "9876543223",
+    "dob": "1999-06-30",
+    "password": "Emma@321"
+  },
+  {
+    "username": "michael_brown",
+    "email": "michael.brown005@example.com",
+    "phone": "9876543224",
+    "dob": "1990-01-15",
+    "password": "Michael@654"
+  }
 ]
 ```
 
-### DELETE Student
+---
+
+### 3. Get All Users
+**Method:** `GET`
+
+**Endpoint:**
 ```
-GET localhost:8090/student/deleteStudent/124
+/user/allUser
 ```
 
-### GET All Students
+---
+
+### 4. Get User by ID
+**Method:** `GET`
+
+**Endpoint:**
 ```
-GET localhost:8090/student/getAllStudents
+/user/getUserById/{id}
 ```
 
-### PUT Update Student
+---
+
+### 5. Delete User by ID
+**Method:** `DELETE`
+
+**Endpoint:**
 ```
-PUT localhost:8090/student/updateStudent/1
+/user/deleteUserById/{id}
 ```
-**Body (JSON):**
+
+Example:
+```
+/user/deleteUserById/1
+```
+
+---
+
+### 6. Update User by ID
+**Method:** `PUT`
+
+**Endpoint:**
+```
+/user/updateUserById/{id}
+```
+
+Example:
+```
+/user/updateUserById/2
+```
+
+**Request Body (JSON):**
 ```json
 {
-    "name": "Md Mohsin Haider",
-    "email": "mohsinhaider@mohsin.com",
-    "phone": 1256527688
+    "id": 2,
+    "username": "Mohsin Haider",
+    "email": "Devil@mohsin.com",
+    "phone": "10192928",
+    "dob": "2024-10-10",
+    "password": "123mohsin"
 }
 ```
 
-## Dependencies
-This project uses the following dependencies:
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.mysql</groupId>
-        <artifactId>mysql-connector-j</artifactId>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <optional>true</optional>
-    </dependency>
-</dependencies>
-```
+---
 
-## Contributing
-Feel free to fork this repository and submit pull requests for improvements.
+## Notes
+- All API requests should be sent with the `Content-Type: application/json` header.
+- Replace `{id}` with the actual user ID.
+- Ensure the server is running at `http://localhost:8090` before making requests.
 
-## License
-This project is licensed under the MIT License.
+---
 
-## Contact
-For any queries, contact **Md Mohsin Haider** at [mdmohsinhaider6@gmail.com](mailto:mdmohsinhaider6@gmail.com)
-
-Connect on **LinkedIn**: [Md Mohsin Haider](https://www.linkedin.com/in/md-mohsin-haider/)
+## Author
+**Md Mohsin Haider**
