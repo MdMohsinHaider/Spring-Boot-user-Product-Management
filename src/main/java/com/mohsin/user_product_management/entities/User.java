@@ -1,4 +1,4 @@
-package com.mohsin.user_product.entities;
+package com.mohsin.user_product_management.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
