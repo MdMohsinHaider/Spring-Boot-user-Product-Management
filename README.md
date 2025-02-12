@@ -29,7 +29,7 @@ This is a simple CRUD (Create, Read, Update, Delete) application built using Spr
 ### Clone the Repository
 ```sh
 git clone https://github.com/your-repo/spring_boot_simple_crud_with_sql.git
-cd user_product
+cd spring_boot_simple_crud_with_sql
 ```
 
 ### Configure the Database

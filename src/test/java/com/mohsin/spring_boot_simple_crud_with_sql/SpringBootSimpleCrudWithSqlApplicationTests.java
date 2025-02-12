@@ -1,4 +1,4 @@
-package com.mohsin.user_product;
+package com.mohsin.spring_boot_simple_crud_with_sql;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

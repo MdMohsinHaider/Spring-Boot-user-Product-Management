@@ -1,4 +1,4 @@
-package com.mohsin.user_product.entities;
+package com.mohsin.spring_boot_simple_crud_with_sql.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
