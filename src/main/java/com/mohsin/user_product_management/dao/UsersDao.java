@@ -6,7 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * UsersDao interface provides an abstraction for User-related database operations.
+ * The {@code UsersDao} interface provides methods for performing CRUD operations on User entities.
+ * It defines methods to save, retrieve, update, and delete user records.
+ *
+ * @author Md Mohsin Haider
+ * @version 1.0
+ * @since 2025
  */
 public interface UsersDao {
 
@@ -19,10 +24,10 @@ public interface UsersDao {
     User saveUserDao(User user);
 
     /**
-     * Saves a List<User> entity to the database.
+     * Saves multiple users to the database in bulk.
      *
-     * @param users the user entity to be saved
-     * @return the saved user entity
+     * @param users the list of user entities to be saved
+     * @return the list of saved user entities
      */
     List<User> saveUsersDao(List<User> users);
 
@@ -34,7 +39,7 @@ public interface UsersDao {
     List<User> getAllUsers();
 
     /**
-     * Retrieves a user by their ID.
+     * Retrieves a user by their unique identifier.
      *
      * @param id the ID of the user
      * @return an optional containing the user if found, otherwise empty
@@ -42,19 +47,20 @@ public interface UsersDao {
     Optional<User> getUserById(int id);
 
     /**
-     * Updates a user by their ID.
+     * Updates a user identified by their ID with new details.
      *
      * @param id the ID of the user to be updated
      * @param user the updated user entity
-     * @return the updated user entity if successful
+     * @return an optional containing the updated user if the update was successful, otherwise empty
      */
     Optional<User> updateUserById(int id, User user);
 
     /**
-     * Deletes a user by their ID.
+     * Deletes a user from the database by their ID.
      *
      * @param id the ID of the user to be deleted
-     * @return true if the user was deleted, false otherwise
+     * @return {@code true} if the deletion was successful, otherwise {@code false}.
      */
     boolean deleteUserById(int id);
 }
+
